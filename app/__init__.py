@@ -27,7 +27,7 @@ def create_app(config_class=Config):
     @app.route("/api/public")
     @cross_origin(headers=["Content-Type", "Authorization"])
     def public():
-        response = "Hello from a public endpoint! You don't need to be authenticated to see this."
+        response = "Hello from a public endpoint! You don't need to be authenticated to see this."  # noqa
         return jsonify(message=response)
 
     # This needs authentication
@@ -38,7 +38,7 @@ def create_app(config_class=Config):
     def private():
         token = request.headers.get('Authorization')
         print(token)
-        response = "Hello from a private endpoint! You need to be authenticated to see this."
+        response = "Hello from a private endpoint! You need to be authenticated to see this."  # noqa
         return jsonify(message=response)
 
     return app

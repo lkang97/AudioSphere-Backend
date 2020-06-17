@@ -6,7 +6,7 @@
 | -------------- | :--------: | --------------------: |
 | id             |  integer   | not null, primary key |
 | email          |   string   |      not null, unique |
-| username       | string(50) |      not null, unique |
+| nickname       | string(50) |      not null, unique |
 
 -Associations: User has many songs (one-to-many)
 
@@ -28,5 +28,14 @@
 | attribute name | data type |               details |
 | -------------- | :-------: | --------------------: |
 | id             |  integer  | not null, primary key |
+| song_id        |  integer  | not null, foreign key |
+| user_id        |  integer  | not null, foreign key |
+
+## **Comment**
+
+| attribute name | data type |               details |
+| -------------- | :-------: | --------------------: |
+| id             |  integer  | not null, primary key |
+| comment        |   text    |              not null |
 | song_id        |  integer  | not null, foreign key |
 | user_id        |  integer  | not null, foreign key |
