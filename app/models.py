@@ -27,6 +27,11 @@ class User(db.Model):
             'faveSongs': [favorite.to_dict() for favorite in self.favorites]
         }
 
+    def to_dict_name(self):
+        return {
+            'nickname': self.nickname
+        }
+
 
 class Song(db.Model):
     __tablename__ = 'songs'
@@ -73,5 +78,5 @@ class Comment(db.Model):
         return {
             'id': self.id,
             'comment': self.comment,
-            'user': self.user,
+            'user': self.user.to_dict_name(),
         }
