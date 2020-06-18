@@ -4,20 +4,20 @@
 
    - POST "/users"
      - This endpoint will create a new user
-   - PUT "/users/:user_id"
-     - This endpoint will update user information
+   - GET "/users/:user_id/songs"
+   - This enpoint will get all the songs for a specific user
 
 2. Songs:
 
    - GET "/songs"
      - This endpoint returns all songs
-   - GET "/songs/:id"
+   - GET "/songs/:song_id"
      - This endpoint returns all info for a single song @id
    - POST "/songs"
      - This endpoint will create a new song
-   - PUT "/songs/:id"
+   - PUT "/songs/:song_id"
      - This endpoint will update a song @id
-   - DELETE "/songs/:id"
+   - DELETE "/songs/:song_id"
      - This endpoint will delete a song @id
 
 3. Favorites:

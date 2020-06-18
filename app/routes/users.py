@@ -1,8 +1,7 @@
 from flask import Blueprint
 from flask_cors import cross_origin
 from ..auth import *
-from app.models import db, User, Set
-import requests
+from app.models import db, User, Song
 
 bp = Blueprint("users", __name__, url_prefix='/users')
 

@@ -35,6 +35,8 @@ class Song(db.Model):
     title = db.Column(db.String, nullable=False)
     genre = db.Column(db.String, nullable=False)
     description = db.Column(db.Text)
+    image_url = db.Column(db.String)
+    song_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     created_at = db.Column(db.DateTime)
 
@@ -48,6 +50,8 @@ class Song(db.Model):
             'title': self.title,
             'genre': self.genre,
             'description': self.description,
+            'image_url': self.image_url,
+            'song_url': self.song_url,
             'user_id': self.user_id,
             'created_at': self.created_at,
             'favorites': len(self.favorites)

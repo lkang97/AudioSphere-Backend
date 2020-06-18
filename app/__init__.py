@@ -9,6 +9,7 @@ from jose import jwt
 from .auth import *
 from .config import Config
 from .models import db
+from .routes import users, songs
 
 
 def create_app(config_class=Config):
@@ -16,6 +17,8 @@ def create_app(config_class=Config):
     app.config.from_object(Config)
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
+    app.register_blueprint(users.bp)
+    app.register_blueprint(songs.bp)
     db.init_app(app)
     Migrate(app, db)
 
@@ -45,5 +48,12 @@ def create_app(config_class=Config):
         print(token)
         response = "Hello from a private endpoint! You need to be authenticated to see this."  # noqa
         return jsonify(message=response)
+
+    @app.route("/api/external")
+    @cross_origin(headers=["Content-Type", "Authorization"])
+    # @requires_auth
+    def api():
+        token = request.headers.get('Authorization')
+        return jsonify(message=token)
 
     return app
