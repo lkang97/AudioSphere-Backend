@@ -9,7 +9,7 @@ from jose import jwt
 from .auth import *
 from .config import Config
 from .models import db
-from .routes import users, songs
+from .routes import users, songs, favorites, comments
 
 
 def create_app(config_class=Config):
@@ -19,6 +19,8 @@ def create_app(config_class=Config):
 
     app.register_blueprint(users.bp)
     app.register_blueprint(songs.bp)
+    app.register_blueprint(favorites.bp)
+    app.register_blueprint(comments.bp)
     db.init_app(app)
     Migrate(app, db)
 

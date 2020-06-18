@@ -12,11 +12,15 @@ with app.app_context():
     song1 = Song(title="Song 1",
                  genre="Rap",
                  description="description 1",
+                 image_url="image placeholder",
+                 song_url="song placeholder",
                  user_id=1,
                  created_at="2020-06-06 16:56:54.271262")
     song2 = Song(title="Category 2",
                  genre="Pop",
                  description="description 2",
+                 image_url="image placeholder 2",
+                 song_url="song placeholder 2",
                  user_id=1,
                  created_at="2020-06-06 16:56:54.271262")
     comment1 = Comment(comment="comment 1",
