@@ -16,6 +16,16 @@ class User(db.Model):
 
     songs = db.relationship('Song', back_populates='user')
     favorites = db.relationship('Song', secondary=favorites_table)
+    comments = db.relationship('Comment', back_populates='user')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            'email': self.email,
+            'nickname': self.nickname,
+            'userSongs': [song.to_dict() for song in self.songs],
+            'faveSongs': [favorite.to_dict() for favorite in self.favorites]
+        }
 
 
 class Song(db.Model):
@@ -30,6 +40,18 @@ class Song(db.Model):
 
     user = db.relationship('User', back_populates='songs')
     favorites = db.relationship('User', secondary=favorites_table)
+    comments = db.relationship('Comment', back_populates='song')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            'title': self.title,
+            'genre': self.genre,
+            'description': self.description,
+            'user_id': self.user_id,
+            'created_at': self.created_at,
+            'favorites': len(self.favorites)
+        }
 
 
 class Comment(db.Model):
@@ -39,3 +61,13 @@ class Comment(db.Model):
     comment = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     song_id = db.Column(db.Integer, db.ForeignKey('songs.id'), nullable=False)
+
+    user = db.relationship('User', back_populates='comments')
+    song = db.relationship('Song', back_populates='comments')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'comment': self.comment,
+            'user': self.user,
+        }
