@@ -3,16 +3,21 @@ from six.moves.urllib.request import urlopen
 from functools import wraps
 
 from flask import Flask, request, jsonify, _request_ctx_stack
+from flask_migrate import Migrate
 from flask_cors import cross_origin, CORS
 from jose import jwt
 from .auth import *
 from .config import Config
+from .models import db
 
 
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
+    db.init_app(app)
+    Migrate(app, db)
 
     # Error handler
 

@@ -19,7 +19,7 @@ class User(db.Model):
 
 
 class Song(db.Model):
-    __tablename = 'songs'
+    __tablename__ = 'songs'
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
@@ -33,7 +33,7 @@ class Song(db.Model):
 
 
 class Comment(db.Model):
-    __tablename = 'comments'
+    __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.Text, nullable=False)
