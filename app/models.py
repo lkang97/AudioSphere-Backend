@@ -59,7 +59,8 @@ class Song(db.Model):
             'song_url': self.song_url,
             'user_id': self.user_id,
             'created_at': self.created_at,
-            'favorites': len(self.favorites)
+            'favorites': len(self.favorites),
+            'user': self.user.to_dict_name()
         }
 
 

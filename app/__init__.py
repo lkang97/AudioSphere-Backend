@@ -1,6 +1,11 @@
 import json
 from six.moves.urllib.request import urlopen
 from functools import wraps
+import boto3
+import os
+from werkzeug.utils import secure_filename
+from botocore.exceptions import ClientError
+
 
 from flask import Flask, request, jsonify, _request_ctx_stack
 from flask_migrate import Migrate
@@ -31,6 +36,34 @@ def create_app(config_class=Config):
         response = jsonify(ex.error)
         response.status_code = ex.status_code
         return response
+
+    @app.route('/upload', methods=['POST'])
+    @cross_origin(headers=["Content-Type", "Authorization"])
+    def upload():
+        secret = os.environ.get('AWS_SECRET')
+        accessKey = os.environ.get('AWS_ACCESS_KEY')
+        region = os.environ.get('AWS_REGION')
+        bucket = os.environ.get('AWS_BUCKET')
+
+        s3 = boto3.client(
+            "s3",
+            aws_access_key_id=accessKey,
+            aws_secret_access_key=secret,
+        )
+        try:
+            file = request.files['file']
+            filename = ''
+            if file:
+                filename = secure_filename(file.filename)
+                s3.upload_fileobj(
+                    file,
+                    bucket,
+                    filename,
+                    ExtraArgs={'ACL': 'public-read'},
+                )
+                return jsonify(f'https://{bucket}.s3.{region}.amazonaws.com/{filename}')
+        except Exception as e:
+            return (str(e))
 
     # This doesn't need authentication
 

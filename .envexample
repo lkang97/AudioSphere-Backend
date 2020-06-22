@@ -1,3 +1,7 @@
 FLASK_ENV=development
 DATABASE_URL=postgresql://audiosphere_user:password@localhost/audiosphere_db
 SECRET_KEY=secret
+AWS_ACCESS_KEY=access-key
+AWS_SECRET=secret-key
+AWS_REGION=region
+AWS_BUCKET=bucket-name
