@@ -1,8 +1,9 @@
 from flask import Blueprint
 from flask_cors import cross_origin
 from ..auth import *
-from app.models import db, Song
+from app.models import db, Song, User
 import json
+import requests
 
 bp = Blueprint("songs", __name__, url_prefix='/songs')
 
@@ -35,13 +36,21 @@ def single_song(song_id):
 @requires_auth
 def add_song():
     data = request.json
+    token = request.headers.get('Authorization')
+    req = requests.get('https://dev-c-4o8wnx.auth0.com/userinfo',
+                       headers={'Authorization': token}).content
+    userInfo = json.loads(req)
+    userId = User.query.filter_by(email=userInfo['email']).first().id
+    print(userId)
+    print(data)
     song = Song(title=data['title'],
                 genre=data['genre'],
                 description=data['description'],
                 image_url=data['image_url'],
                 song_url=data['song_url'],
-                user_id=data['user_id'],
-                created_at=data['created_at'])
+                user_id=userId,
+                created_at=data['created_at'],
+                )
 
     db.session.add(song)
     db.session.commit()
