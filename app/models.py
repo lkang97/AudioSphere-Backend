@@ -32,6 +32,11 @@ class User(db.Model):
             'nickname': self.nickname
         }
 
+    def to_dict_favorites(self):
+        return {
+            'id': self.id
+        }
+
 
 class Song(db.Model):
     __tablename__ = 'songs'
@@ -59,7 +64,7 @@ class Song(db.Model):
             'song_url': self.song_url,
             'user_id': self.user_id,
             'created_at': self.created_at,
-            'favorites': len(self.favorites),
+            'favorites': [favorite.to_dict_favorites() for favorite in self.favorites],
             'user': self.user.to_dict_name()
         }
 
