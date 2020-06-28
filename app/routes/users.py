@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask_cors import cross_origin
 from ..auth import *
 from app.models import db, User, Song
+import requests
 
 bp = Blueprint("users", __name__, url_prefix='/users')
 
@@ -47,9 +48,15 @@ def updateUser():
 
 
 # This route will get all the songs for a specific user
-@bp.route('<int:user_id>/songs')
+@bp.route('/songs')
 @cross_origin(headers=["Content-Type", "Authorization"])
 @requires_auth
-def userSongs(user_id):
-    songs = Song.query.filter_by(user_id=user_id).all()
-    return jsonify([song.to_dict() for song in songs])
+def userSongs():
+    token = request.headers.get('Authorization')
+    req = requests.get('https://dev-c-4o8wnx.auth0.com/userinfo',
+                       headers={'Authorization': token}).content
+    userInfo = json.loads(req)
+    userId = User.query.filter_by(email=userInfo['email']).first().id
+    userInfo = User.query.options(db.joinedload(
+        'songs'), db.joinedload('favorites')).get(userId)
+    return userInfo.to_dict(), 200

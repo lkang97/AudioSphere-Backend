@@ -24,7 +24,7 @@ class User(db.Model):
             'email': self.email,
             'nickname': self.nickname,
             'userSongs': [song.to_dict() for song in self.songs],
-            'faveSongs': [favorite.to_dict() for favorite in self.favorites]
+            'favoriteSongs': [favorite.to_dict() for favorite in self.favorites]
         }
 
     def to_dict_name(self):
@@ -65,7 +65,8 @@ class Song(db.Model):
             'user_id': self.user_id,
             'created_at': self.created_at,
             'favorites': [favorite.to_dict_favorites() for favorite in self.favorites],
-            'user': self.user.to_dict_name()
+            'user': self.user.to_dict_name(),
+            'favorites_count': len(self.favorites),
         }
 
 
