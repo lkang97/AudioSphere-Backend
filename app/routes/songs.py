@@ -41,8 +41,6 @@ def add_song():
                        headers={'Authorization': token}).content
     userInfo = json.loads(req)
     userId = User.query.filter_by(email=userInfo['email']).first().id
-    print(userId)
-    print(data)
     song = Song(title=data['title'],
                 genre=data['genre'],
                 description=data['description'],
@@ -62,3 +60,23 @@ def add_song():
 # @cross_origin(headers=["Content-Type", "Authorization"])
 # @requires_auth
 # def update_song(song_id):
+
+# Deletes a song based on id
+@bp.route('/<int:song_id>', methods=['DELETE'])
+@cross_origin(headers=["Content-Type", "Authorization"])
+@requires_auth
+def delete_song(song_id):
+    token = request.headers.get('Authorization')
+    req = requests.get('https://dev-c-4o8wnx.auth0.com/userinfo',
+                       headers={'Authorization': token}).content
+
+    userInfo = json.loads(req)
+    userId = User.query.filter_by(email=userInfo['email']).first().id
+    song = Song.query.get(song_id)
+    song_user = song.user_id
+    if userId == song_user:
+        db.session.delete(song)
+        db.session.commit()
+        return "Song has been deleted", 204
+    else:
+        return "Authorization denied", 401

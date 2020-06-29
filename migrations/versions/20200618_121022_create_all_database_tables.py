@@ -100,7 +100,8 @@ def upgrade():
             'genre': 'R&B',
             'description': 'By Mario Vazquez',
             'image_url': 'https://img.discogs.com/9cZNT2P1Y8J1OEfLQsTyoZZA1jM=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1286904-1476661289-4461.jpeg.jpg',
-            'song_url': 'placeholder',
+            # 'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/01_Gallery.mp3',
+            'song_url': "placeholder",
             'user_id': 1,
             'created_at': datetime.now()
         },
