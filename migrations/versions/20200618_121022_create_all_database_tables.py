@@ -100,45 +100,9 @@ def upgrade():
             'genre': 'R&B',
             'description': 'By Mario Vazquez',
             'image_url': 'https://img.discogs.com/9cZNT2P1Y8J1OEfLQsTyoZZA1jM=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1286904-1476661289-4461.jpeg.jpg',
-            # 'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/01_Gallery.mp3',
-            'song_url': "placeholder",
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/01_Gallery.mp3',
+            # 'song_url': "placeholder",
             'user_id': 1,
-            'created_at': datetime.now()
-        },
-        {
-            'title': 'Sorry-Justin Bieber',
-            'genre': 'Pop',
-            'description': '',
-            'image_url': 'https://stereoheadism.files.wordpress.com/2015/10/bieber-purpose.jpg?w=736',
-            'song_url': 'placeholder',
-            'user_id': 1,
-            'created_at': datetime.now()
-        },
-        {
-            'title': 'Killer Whales',
-            'genre': 'Indie Rock',
-            'description': 'Sung by Smallpools on their album Lovetap!',
-            'image_url': 'https://atwoodmagazine.com/wp-content/uploads/2015/04/lovetap_art_FINAL-HIGH-QUALITY.jpg',
-            'song_url': 'placeholder',
-            'user_id': 2,
-            'created_at': datetime.now()
-        },
-        {
-            'title': 'Airplanes',
-            'genre': 'Pop',
-            'description': 'Throwback song.',
-            'image_url': 'https://i.pinimg.com/originals/fa/57/74/fa577490d17d19e635ce5a1499c99898.jpg',
-            'song_url': 'placeholder',
-            'user_id': 1,
-            'created_at': datetime.now()
-        },
-        {
-            'title': 'Portugal',
-            'genre': 'Alternative',
-            'description': 'My favorite song by Walk the Moon.',
-            'image_url': 'https://img.discogs.com/kkyT3ud0I-I5qqCpspDz32Kmc_w=/fit-in/426x423/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6382139-1417872467-2053.jpeg.jpg',
-            'song_url': 'placeholder',
-            'user_id': 2,
             'created_at': datetime.now()
         },
         {
@@ -146,7 +110,8 @@ def upgrade():
             'genre': 'Pop',
             'description': 'One of my all time favorite songs.',
             'image_url': 'https://sterling-sound.com/wp-content/uploads/because-of-you.jpg',
-            'song_url': 'placeholder',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/Because_Of_You.mp3',
             'user_id': 1,
             'created_at': datetime.now()
         },
@@ -155,25 +120,8 @@ def upgrade():
             'genre': 'EDM',
             'description': 'Intense head nods.',
             'image_url': 'https://i1.sndcdn.com/artworks-000574913561-ywoi28-t500x500.jpg',
-            'song_url': 'placeholder',
-            'user_id': 3,
-            'created_at': datetime.now()
-        },
-        {
-            'title': 'Freesol',
-            'genre': 'EDM',
-            'description': 'By Seven Lions.',
-            'image_url': 'https://www.edmsauce.com/wp-content/uploads/2017/04/artworks-000217166678-f89esb-t500x500.jpg',
-            'song_url': 'placeholder',
-            'user_id': 3,
-            'created_at': datetime.now()
-        },
-        {
-            'title': 'Fractures',
-            'genre': 'EDM',
-            'description': 'Mad feels',
-            'image_url': 'https://i2.wp.com/images.genius.com/563802e4fc81ea0a457100c699282cc3.1000x1000x1.jpg?resize=462%2C462&ssl=1',
-            'song_url': 'placeholder',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/Trivecta_AMIDY__RRY_-_Riptide_Lyrics.mp3',
             'user_id': 3,
             'created_at': datetime.now()
         },
@@ -182,10 +130,71 @@ def upgrade():
             'genre': 'EDM',
             'description': 'Said the Sky Remix',
             'image_url': 'https://i1.sndcdn.com/artworks-000450914991-h78r8l-t500x500.jpg',
-            'song_url': 'placeholder',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/Atoms.mp3',
             'user_id': 3,
             'created_at': datetime.now()
-        }
+        },
+        {
+            'title': 'Sorry',
+            'genre': 'Pop',
+            'description': '',
+            'image_url': 'https://stereoheadism.files.wordpress.com/2015/10/bieber-purpose.jpg?w=736',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/04_Sorry.m4a',
+            'user_id': 1,
+            'created_at': datetime.now()
+        },
+        {
+            'title': 'Killer Whales',
+            'genre': 'Indie Rock',
+            'description': 'Sung by Smallpools on their album Lovetap!',
+            'image_url': 'https://atwoodmagazine.com/wp-content/uploads/2015/04/lovetap_art_FINAL-HIGH-QUALITY.jpg',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/02_Killer_Whales.m4a',
+            'user_id': 2,
+            'created_at': datetime.now()
+        },
+        {
+            'title': 'Airplanes',
+            'genre': 'Pop',
+            'description': 'Throwback song.',
+            'image_url': 'https://i.pinimg.com/originals/fa/57/74/fa577490d17d19e635ce5a1499c99898.jpg',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/Airplanes.mp3',
+            'user_id': 1,
+            'created_at': datetime.now()
+        },
+        {
+            'title': 'Portugal',
+            'genre': 'Alternative',
+            'description': 'My favorite song by Walk the Moon.',
+            'image_url': 'https://img.discogs.com/kkyT3ud0I-I5qqCpspDz32Kmc_w=/fit-in/426x423/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6382139-1417872467-2053.jpeg.jpg',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/06_Portugal.mp3',
+            'user_id': 2,
+            'created_at': datetime.now()
+        },
+        {
+            'title': 'Freesol',
+            'genre': 'EDM',
+            'description': 'By Seven Lions.',
+            'image_url': 'https://www.edmsauce.com/wp-content/uploads/2017/04/artworks-000217166678-f89esb-t500x500.jpg',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/Freesol.mp3',
+            'user_id': 3,
+            'created_at': datetime.now()
+        },
+        {
+            'title': 'Fractures',
+            'genre': 'EDM',
+            'description': 'Mad feels',
+            'image_url': 'https://i2.wp.com/images.genius.com/563802e4fc81ea0a457100c699282cc3.1000x1000x1.jpg?resize=462%2C462&ssl=1',
+            # 'song_url': 'placeholder',
+            'song_url': 'https://audiosphere-project.s3.us-east-2.amazonaws.com/Fractures.mp3',
+            'user_id': 3,
+            'created_at': datetime.now()
+        },
     ])
 
     # ### end Alembic commands ###
