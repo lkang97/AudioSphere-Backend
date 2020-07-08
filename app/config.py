@@ -1,5 +1,7 @@
 import os
 
+conn = psycopg2.connect(os.environ.get('DATABASE_URL'), sslmode='require')
+
 
 class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
