@@ -1,7 +1,8 @@
 import os
-import psycopg2
+from dotenv import load_dotenv
 
-conn = psycopg2.connect(os.environ.get('DATABASE_URL'), sslmode='require')
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
 
 
 class Config(object):
